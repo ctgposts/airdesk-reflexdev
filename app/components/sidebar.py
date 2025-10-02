@@ -20,6 +20,7 @@ def sidebar_item(name: str, icon: str, url: str) -> rx.Component:
 def role_based_sidebar_items() -> rx.Component:
     admin_links = [
         ("Tickets", "ticket"),
+        ("Bookings", "calendar-check"),
         ("Umrah Packages", "package"),
         ("Visa Mgmt", "file-text"),
         ("Customers", "users"),
@@ -27,11 +28,13 @@ def role_based_sidebar_items() -> rx.Component:
     ]
     manager_links = [
         ("Tickets", "ticket"),
+        ("Bookings", "calendar-check"),
         ("Customers", "users"),
         ("Reports", "bar-chart-2"),
     ]
     staff_links = [
         ("Tickets", "ticket"),
+        ("Bookings", "calendar-check"),
         ("Visa Mgmt", "file-text"),
         ("Customers", "users"),
     ]

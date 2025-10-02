@@ -6,6 +6,7 @@ from app.pages.packages_page import packages_page
 from app.pages.visa_page import visa_page
 from app.pages.customers_page import customers_page
 from app.pages.reports_page import reports_page
+from app.pages.bookings_page import bookings_page
 
 
 def stat_card(title: str, value: rx.Var[str], icon: str, color: str) -> rx.Component:
@@ -74,6 +75,7 @@ def dashboard_page() -> rx.Component:
             DashboardState.active_view,
             ("Dashboard", dashboard_view()),
             ("Tickets", tickets_page()),
+            ("Bookings", bookings_page()),
             ("Umrah Packages", packages_page()),
             ("Visa Mgmt", visa_page()),
             ("Customers", customers_page()),

@@ -44,6 +44,14 @@ class VisaApplication(TypedDict):
     submission_date: str
 
 
+class Booking(TypedDict):
+    id: int
+    ticket_pnr: str
+    customer_name: str
+    booking_date: str
+    status: str
+
+
 class DashboardState(rx.State):
     active_view: str = "Dashboard"
     show_form: bool = False
@@ -151,6 +159,15 @@ class DashboardState(rx.State):
             "submission_date": "2024-05-18",
         },
     ]
+    bookings: list[Booking] = [
+        {
+            "id": 1,
+            "ticket_pnr": "LUXE-452C",
+            "customer_name": "Jane Smith",
+            "booking_date": "2024-05-20",
+            "status": "Confirmed",
+        }
+    ]
 
     @rx.event
     def open_form(self, item: Optional[dict] = None, is_edit: bool = False):
@@ -205,6 +222,14 @@ class DashboardState(rx.State):
                 "status": "Pending",
                 "submission_date": today,
             }
+        elif self.active_view == "Bookings":
+            self.current_item = {
+                "id": 0,
+                "ticket_pnr": "",
+                "customer_name": "",
+                "booking_date": today,
+                "status": "Confirmed",
+            }
 
     @rx.event
     def save_item(self, form_data: dict):
@@ -213,6 +238,7 @@ class DashboardState(rx.State):
             "Umrah Packages": self.umrah_packages,
             "Customers": self.customers,
             "Visa Mgmt": self.visa_applications,
+            "Bookings": self.bookings,
         }
         item_list = view_map[self.active_view]
         if self.is_edit_mode:
@@ -257,6 +283,7 @@ class DashboardState(rx.State):
             "Umrah Packages": self.umrah_packages,
             "Customers": self.customers,
             "Visa Mgmt": self.visa_applications,
+            "Bookings": self.bookings,
         }
         if item_type in view_map:
             item_list = view_map[item_type]
