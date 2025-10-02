@@ -8,10 +8,7 @@ from app.pages.dashboard import dashboard_page
 def index() -> rx.Component:
     return rx.el.div(
         sidebar(),
-        rx.el.main(
-            dashboard_page(),
-            class_name="flex flex-col flex-1 gap-4 p-4 md:gap-8 md:p-6",
-        ),
+        rx.el.div(dashboard_page(), class_name="flex-1 md:p-6 p-4 overflow-y-auto"),
         class_name="grid min-h-screen w-full lg:grid-cols-[280px_1fr] font-['Inter'] bg-[#FBF7E9]",
     )
 
